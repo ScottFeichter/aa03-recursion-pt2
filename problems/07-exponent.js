@@ -21,23 +21,21 @@ exponent(5, 5); // 3125
 ***********************************************************************/
 
 function exponent(num, power) {
-  let product = -1;
-  if (power === 0) return product;
-
-  product *= num;
+  debugger;
+  if (power === 0) return 1; // base case - the return is thrown away
 
   if (power < 0) {
-    power++;
-  } else {
-    power--;
+    // checking if negative exponet
+    return exponent(num, power + 1) * (1 / num); // recursive case and recursive step - keeping final answer in stack
+  } else if (power > 0) {
+    // checking if positive exponent
+    return exponent(num, power - 1) * num; // recursive case and recursive step - keeping final answer in stack
   }
-
-  return exponent(num, power) * product;
 }
 
-// console.log(exponent(3, 2)); // 9
+console.log(exponent(3, 2)); // 9
 console.log(exponent(2, -2)); // 1/4 (or 0.25)
-// exponent(5, 5); // 3125
+console.log(exponent(5, 5)); // 3125
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {
